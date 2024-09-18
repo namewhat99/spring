@@ -1,4 +1,4 @@
-package spring.concurrency.Entity;
+package spring.concurrency.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,10 +1,9 @@
-package spring.concurrency.Entity;
+package spring.concurrency.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
