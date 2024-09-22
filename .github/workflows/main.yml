@@ -61,5 +61,6 @@ jobs:
             sudo docker pull leegh963/concurrency
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker rm $(sudo docker ps -a -q)
-            sudo docker run -it -d -p 8080:8080 -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -e DATABASE_URL=${{ secrets.DATABASE_URL }} -e DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} -e DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} leegh963/concurrency
+            sudo docker run -it -d -p 8080:8080 -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -e DATABASE_URL=${{ secrets.DATABASE_URL }} -e DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} -e DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} leegh963/concurrency || true
+            sudo docker logs leegh963/concurrency
           EOF
