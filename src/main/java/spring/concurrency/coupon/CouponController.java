@@ -15,7 +15,7 @@ public class CouponController {
 
     @Trace
     @GetMapping
-    public void getCoupon(){
-        this.couponService.publishCoupon();
+    public void getCoupon(String nickname){
+        this.couponService.publishCoupon(nickname);
     }
 }
