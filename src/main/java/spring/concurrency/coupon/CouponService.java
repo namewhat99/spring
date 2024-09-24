@@ -2,6 +2,7 @@ package spring.concurrency.coupon;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import spring.concurrency.annotation.Retry;
 import spring.concurrency.annotation.Trace;
 import spring.concurrency.entity.Coupon;
 import spring.concurrency.entity.User;
@@ -19,21 +20,34 @@ public class CouponService {
     private final UserRepository userRepository;
 
     @Trace
+    @Retry
     public void publishCoupon(String nickname){
 
         User user = isMember(nickname);
 
         if(user != null){
 
-            String couponCode = this.publishCouponCode();
+            long couponCount = this.couponRepository.count();
 
-            Coupon isCouponExists = this.couponRepository.findByCode(couponCode);
+            if(couponCount < 100L){
 
-            if(isCouponExists == null){
+                String couponCode = this.publishCouponCode();
 
-                Coupon coupon = Coupon.builder().code(couponCode).user(user).build();
+                Coupon isCouponExists = this.couponRepository.findByCode(couponCode);
 
-                this.couponRepository.save(coupon);
+                if(isCouponExists == null){
+
+                    Coupon coupon = Coupon.builder().code(couponCode).user(user).build();
+                    this.couponRepository.save(coupon);
+
+
+                }else{
+                    throw new IllegalStateException("중복된 쿠폰 번호입니다");
+                }
+            }
+
+            else{
+                throw new IllegalArgumentException("늦었습니다");
             }
 
         }else {

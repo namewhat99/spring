@@ -17,7 +17,7 @@ class LoggerAopTest {
 
     @Test
     public void loggingTest(){
-        this.couponService.publishCoupon();
+        this.couponService.publishCoupon("123");
     }
 
 }
