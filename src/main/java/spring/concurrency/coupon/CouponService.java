@@ -20,7 +20,6 @@ public class CouponService {
     private final UserRepository userRepository;
 
     @Trace
-    @Retry
     public void publishCoupon(String nickname){
 
         User user = isMember(nickname);
