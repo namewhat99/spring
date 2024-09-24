@@ -2,6 +2,7 @@ package spring.concurrency.coupon;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import spring.concurrency.annotation.Retry;
 import spring.concurrency.annotation.Trace;
 import spring.concurrency.entity.Coupon;
@@ -20,6 +21,7 @@ public class CouponService {
     private final UserRepository userRepository;
 
     @Trace
+    @Transactional
     public void publishCoupon(String nickname){
 
         User user = isMember(nickname);
