@@ -40,7 +40,6 @@ public class CouponService {
                     Coupon coupon = Coupon.builder().code(couponCode).user(user).build();
                     this.couponRepository.save(coupon);
 
-
                 }else{
                     throw new IllegalStateException("중복된 쿠폰 번호입니다");
                 }

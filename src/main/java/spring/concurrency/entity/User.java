@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,5 +17,5 @@ public class User {
     private String nickname;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private ArrayList<Coupon> couponList;
+    private List<Coupon> couponList;
 }
