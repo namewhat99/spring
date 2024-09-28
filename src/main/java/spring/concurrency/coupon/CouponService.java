@@ -45,16 +45,12 @@ public class CouponService {
                     throw new IllegalStateException("중복된 쿠폰 번호입니다");
                 }
             }
-
             else{
                 throw new IllegalArgumentException("늦었습니다");
             }
-
         }else {
             throw new IllegalArgumentException("없는 유저입니다");
         }
-
-
     }
 
     private String publishCouponCode(){

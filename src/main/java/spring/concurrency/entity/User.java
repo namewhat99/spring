@@ -15,7 +15,6 @@ public class User {
     @GeneratedValue
     private Long id;
 
-    @Column(unique = true)
     private String nickname;
 
     @OneToMany(fetch = FetchType.LAZY)
