@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class Coupon {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY , generator = "name_gen")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String code;
